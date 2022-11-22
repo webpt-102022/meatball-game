@@ -6,7 +6,7 @@ class Game {
     this.droplets = [];
     this.points = 0;
     // Character
-    this.meatball = new Player(500, 400, 100, 100);
+    this.meatball = new Player(500, 400, 70, 70);
   }
 
   _drawMeatball() {
@@ -36,6 +36,8 @@ class Game {
     // Aplico efectos if necessary
     newDroplet._assignRole();
     newDroplet._assignImage();
+    // Empieza ya cayendo
+    newDroplet._fallDown();
     // Añado al array del constructor
     this.droplets.push(newDroplet);
   }
@@ -119,14 +121,6 @@ class Game {
     this._drawDroplets();
     this._checkCollisions();
     this._writeScore();
-    // Start the fall of the enemies
-    let counter = 0;
-    this.intervalFall = setInterval(() => {
-      if (counter < this.droplets.length) {
-        this.droplets[counter]._fallDown();
-        counter++;
-      }
-    }, 2000);
     // window.requestAnimationFrame(this._update.bind(this)); // Es lo mismo que ponerlo con arrow function
     window.requestAnimationFrame(() => this._update());
   }

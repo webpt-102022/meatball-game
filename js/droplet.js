@@ -17,7 +17,7 @@ class Droplet {
       } else {
         this.y = this.y + 1;
       }
-    }, 1000);
+    }, 10);
   }
 
   _assignRole() {
