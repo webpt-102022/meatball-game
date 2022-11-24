@@ -1,7 +1,7 @@
 class Droplet {
   constructor() {
-    this.x = Math.floor(Math.random() * (950 - 4) + 5);
-    this.y = Math.floor(Math.random() * (-100 + 60 + 1) - 60);
+    this.x = Math.floor(Math.random() * 950);
+    this.y = Math.floor(Math.random() * -100);
     this.width = 50;
     this.height = 50;
     this.role = undefined;

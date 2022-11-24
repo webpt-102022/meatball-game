@@ -2,7 +2,7 @@
 
 > This game is for my students at Ironhack, so that they have an example of the game they should do for module 1.
 
-[<img src="img/page.png">](https://alebausa.github.io/meatball-dev/)
+![]('img/page.png')
 
 ## Description
 
@@ -25,6 +25,7 @@ The purpose of the game is to score points (which one can do endlessly). The gam
 
 ## File structure
 
+- <code>scripts.js</code>: contains the DOM manipulation needed to display and hide the start, canvas and game over screens
 - <code>player.js</code>: constructor for the player meatball. Methods: moveRight(), moveLeft(), \_increase(), \_decrease()
 - <code>droplet.js</code>: constructor for the falling items. Methods: \_fallDown(), \_assignRole(), \_assignImage()
 - <code>assets.js</code>: contains the images and resources for the game

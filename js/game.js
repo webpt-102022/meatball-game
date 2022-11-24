@@ -1,7 +1,7 @@
 class Game {
   constructor(context) {
     this.ctx = context;
-    this.intervalGame = undefined;
+    this.intervalGenerate = undefined;
     this.intervalFall = undefined;
     this.droplets = [];
     this.points = 0;
@@ -29,28 +29,33 @@ class Game {
     })
   }
 
-
-  _generateDroplet() {
-    // Genero
-    const newDroplet = new Droplet(50, 50);
-    // Aplico efectos if necessary
-    newDroplet._assignRole();
-    newDroplet._assignImage();
-    // Empieza ya cayendo
-    newDroplet._fallDown();
-    // Añado al array del constructor
-    this.droplets.push(newDroplet);
+  _generateDroplets() {
+    this.intervalGenerate = setInterval(() => {
+      // Genero
+      const newDroplet = new Droplet(50, 50);
+      // Aplico efectos if necessary
+      newDroplet._assignRole();
+      newDroplet._assignImage();
+      // Empieza ya cayendo
+      newDroplet._fallDown();
+      // Añado al array del constructor
+      this.droplets.push(newDroplet);
+    }, 1000);
   }
 
   _assignControls() {
     // Controles del teclado
     document.addEventListener('keydown', (event) => {
+      console.log('Pressing p', event.code)
       switch (event.code) {
         case 'ArrowLeft':
           this.meatball.moveLeft();
           break;
         case 'ArrowRight':
           this.meatball.moveRight();
+          break;
+        case 'KeyP':
+          this.pause();
           break;
         default:
           break;
@@ -128,9 +133,7 @@ class Game {
   start() {
     this._assignControls();
     // Start the enemy generation
-    this.intervalGame = setInterval(() => {
-      this._generateDroplet();
-    }, 1000);
+    this._generateDroplets();
     this._update();
   }
 }
